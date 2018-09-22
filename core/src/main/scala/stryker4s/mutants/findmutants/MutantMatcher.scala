@@ -56,8 +56,8 @@ class MutantMatcher {
   }
 
   implicit class TermExtensions(original: Term) {
-    def ~~>(mutated: Term*): Seq[Mutant] = {
-      mutated.map(mutant => Mutant(stream.next(), original, mutant))
+    def ~~>(mutated: Mutation[_ <: Term]*): Seq[Mutant] = {
+      mutated.map(mutant => Mutant(stream.next(), original, mutant, mutant.mutationName))
     }
   }
 }
